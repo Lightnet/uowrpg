@@ -1,26 +1,18 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# UE4 Project directories to ignore
+/Binaries/
+/DerivedDataCache/
+/Intermediate/
+/Saved/
+/Build/
 
-# Precompiled Headers
-*.gch
-*.pch
+# Visual Studio solutions
+/*.sln
+/*.sdf
+/*.opensdf
+/*.suo
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Xcode Project files
+/*.xcodeproj
 
 # Executables
 *.exe
