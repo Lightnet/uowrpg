@@ -11,6 +11,7 @@ Note: Give Credit to Lightnet.
 Programs:
  * Unreal Engine 4
  * Visual Studio Community 2015
+ * Blender 2.77
  
 Unreal Engine 4 Version: 4.13
 
