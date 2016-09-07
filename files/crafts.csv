@@ -1,0 +1,3 @@
+---,Name,Description,Materials,PassCreate,FailCreate,SuccessRate,ScrapMaterial
+NewRow,"Potion","Restore health","","None","None","0.000000",""
+NewRow_0,"MP Poition","Restore magic","","None","None","0.000000",""
