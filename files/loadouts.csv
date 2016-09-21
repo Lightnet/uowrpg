@@ -1,0 +1,3 @@
+---,Name,ItemClass,Actor,HotKey,Isable
+fire,"","/Game/Uorpg/Blueprints/Object/Skills/BPRPG_Skill_Fireball01.BPRPG_Skill_Fireball01_C","None","1","True"
+summon,"","/Game/Uorpg/Blueprints/Object/Skills/BPRPG_Skill_Summon01.BPRPG_Skill_Summon01_C","None","2","True"
