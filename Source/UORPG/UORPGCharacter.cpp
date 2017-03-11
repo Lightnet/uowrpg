@@ -1,6 +1,7 @@
-// Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
+// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
 #include "UORPG.h"
+#include "Kismet/HeadMountedDisplayFunctionLibrary.h"
 #include "UORPGCharacter.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -28,13 +29,13 @@ AUORPGCharacter::AUORPGCharacter()
 
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
-	CameraBoom->AttachTo(RootComponent);
+	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->TargetArmLength = 300.0f; // The camera follows at this distance behind the character	
 	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
 	// Create a follow camera
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-	FollowCamera->AttachTo(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
+	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
@@ -44,45 +45,46 @@ AUORPGCharacter::AUORPGCharacter()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void AUORPGCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+void AUORPGCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	// Set up gameplay key bindings
-	check(InputComponent);
-	InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
-	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	check(PlayerInputComponent);
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	InputComponent->BindAxis("MoveForward", this, &AUORPGCharacter::MoveForward);
-	InputComponent->BindAxis("MoveRight", this, &AUORPGCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &AUORPGCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &AUORPGCharacter::MoveRight);
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
-	InputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	InputComponent->BindAxis("TurnRate", this, &AUORPGCharacter::TurnAtRate);
-	InputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
-	InputComponent->BindAxis("LookUpRate", this, &AUORPGCharacter::LookUpAtRate);
+	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("TurnRate", this, &AUORPGCharacter::TurnAtRate);
+	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis("LookUpRate", this, &AUORPGCharacter::LookUpAtRate);
 
 	// handle touch devices
-	InputComponent->BindTouch(IE_Pressed, this, &AUORPGCharacter::TouchStarted);
-	InputComponent->BindTouch(IE_Released, this, &AUORPGCharacter::TouchStopped);
+	PlayerInputComponent->BindTouch(IE_Pressed, this, &AUORPGCharacter::TouchStarted);
+	PlayerInputComponent->BindTouch(IE_Released, this, &AUORPGCharacter::TouchStopped);
+
+	// VR headset functionality
+	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AUORPGCharacter::OnResetVR);
 }
 
 
+void AUORPGCharacter::OnResetVR()
+{
+	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+}
+
 void AUORPGCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
-	// jump, but only on the first touch
-	if (FingerIndex == ETouchIndex::Touch1)
-	{
 		Jump();
-	}
 }
 
 void AUORPGCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
 {
-	if (FingerIndex == ETouchIndex::Touch1)
-	{
 		StopJumping();
-	}
 }
 
 void AUORPGCharacter::TurnAtRate(float Rate)
