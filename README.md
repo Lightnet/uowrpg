@@ -6,6 +6,8 @@ Development stage: Prototype
 
 License: Creative Commons Attribution 4.0 International License
 
+Note: There will be multiple Licenses to this project will be added later.
+
 Note: Give Credit to Lightnet.
 
 Programs:
@@ -13,9 +15,17 @@ Programs:
  * Visual Studio Community 2015
  * Blender 2.77
  
-Unreal Engine 4 Version: 4.13
+Unreal Engine 4 Version: 4.16
 
-Information: 
+Information:
+
+[Current]
+
+Working on mecha, exo suit, and character. To have first person shooter build. To have non/classes build for mechs gears and weapons to custom. With little bit of magic and sci-fi battles.
+
+
+[On hold, work in progress]
+
 Role playing game for job classes battle arena and area. Game Modes (boss area, invitation, death/team match) (work in progress...) This game is does not have level up system. System will be later build. Items, skills, equipments will be part of the system of the combat, magic, and skills to work.
 
 The game is design for job classes battle test for damages. It deal with the pros and cons to the multiplayers. It is very early developments.
