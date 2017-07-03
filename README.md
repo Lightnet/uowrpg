@@ -15,21 +15,16 @@ Programs:
  * Visual Studio Community 2015
  * Blender 2.77
  
-Unreal Engine 4 Version: 4.16
+Unreal Engine 4 Version: 4.16.2
 
 Information:
 
-[Current]
+Working on mecha, exo suit, and character custom design. To have first(main)/thrid(skills base) person shooter/swords build. To have non/classes build for mechs gears and weapons to custom. With little bit of magic and sci-fi battles.
 
-Working on mecha, exo suit, and character. To have first person shooter build. To have non/classes build for mechs gears and weapons to custom. With little bit of magic and sci-fi battles.
+The game will have the basics game modes with friendly fire on to create hard mode. The main game area will be death match 1v1 to 5v5. To have testing grounds for weapons and skill loadouts.
 
-
-[On hold, work in progress]
-
-Role playing game for job classes battle arena and area. Game Modes (boss area, invitation, death/team match) (work in progress...) This game is does not have level up system. System will be later build. Items, skills, equipments will be part of the system of the combat, magic, and skills to work.
+The game will have level up system in different way of doing things.
 
 The game is design for job classes battle test for damages. It deal with the pros and cons to the multiplayers. It is very early developments.
 
-Boss battle to test out the mechanics. Like 10 percent or rage to make special attack active or area object active some buff or debuff monster or player to do damage.
-
-Team or death match to test out the friendly fire functions. 
+There will be custom story or setting for layout for the map.
