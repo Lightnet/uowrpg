@@ -4,8 +4,10 @@ using UnrealBuildTool;
 
 public class UORPG : ModuleRules
 {
-	public UORPG(TargetInfo Target)
+	public UORPG(ReadOnlyTargetRules Target) : base(Target)
 	{
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay" });
 	}
 }

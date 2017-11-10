@@ -5,21 +5,9 @@ using System.Collections.Generic;
 
 public class UORPGEditorTarget : TargetRules
 {
-	public UORPGEditorTarget(TargetInfo Target)
+	public UORPGEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
-	}
-
-	//
-	// TargetRules interface.
-	//
-
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.Add("UORPG");
+		ExtraModuleNames.Add("UORPG");
 	}
 }

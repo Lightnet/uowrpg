@@ -1,8 +1,8 @@
 // Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
-#include "UORPG.h"
 #include "UORPGGameMode.h"
 #include "UORPGCharacter.h"
+#include "UObject/ConstructorHelpers.h"
 
 AUORPGGameMode::AUORPGGameMode()
 {

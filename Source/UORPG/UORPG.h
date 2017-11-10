@@ -1,8 +1,5 @@
 // Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
-#ifndef __UORPG_H__
-#define __UORPG_H__
+#pragma once
 
-#include "EngineMinimal.h"
-
-#endif
+#include "CoreMinimal.h"
